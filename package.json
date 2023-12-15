@@ -1,0 +1,31 @@
+{
+  "name": "nestjs-zulip",
+  "version": "1.0.0",
+  "description": "NestJs module for Zulip communicator.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "lint": "eslint \"lib/**/*.ts\"",
+    "lint:fix": "eslint \"lib/**/*.ts\" --fix"
+  },
+  "keywords": [],
+  "author": "RekinySukcesu.pl",
+  "license": "ISC",
+  "dependencies": {
+    "@nestjs/common": "^10.2.10",
+    "@nestjs/core": "^10.2.10"
+  },
+  "volta": {
+    "node": "18.19.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "eslint": "^8.55.0",
+    "eslint-config-standard-with-typescript": "^42.0.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^16.4.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "typescript": "^5.3.3"
+  }
+}
