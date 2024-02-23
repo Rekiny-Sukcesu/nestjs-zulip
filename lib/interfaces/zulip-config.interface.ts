@@ -1,5 +1,5 @@
 export interface IZulipConfig {
-    login: string,
-    password: string,
-    realm: string
+  login: string;
+  password: string;
+  realm: string;
 }

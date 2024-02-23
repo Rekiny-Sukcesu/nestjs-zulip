@@ -3,11 +3,17 @@ import { ZulipService } from './zulip.service';
 import { IZulipConfig } from './interfaces/zulip-config.interface';
 
 @Module({
-  providers: [ZulipService],
-  exports: [ZulipModule],
+  providers: [
+    ZulipService,
+    {
+      provide: 'ZULIP_CONFIG',
+      useValue: {},
+    },
+  ],
+  exports: [ZulipService],
 })
 export class ZulipModule {
-  static register(config: IZulipConfig): DynamicModule {
+  public static register(config: IZulipConfig): DynamicModule {
     return {
       module: ZulipModule,
       providers: [

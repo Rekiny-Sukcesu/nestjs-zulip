@@ -36,11 +36,11 @@ export class ZulipConfig {
     return this.apiKey;
   }
 
-  getAuth(){
+  getAuth() {
     return {
       auth: {
         username: this.login,
-        password: this.apiKey
+        password: this.apiKey,
       },
     };
   }

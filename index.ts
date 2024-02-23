@@ -1,1 +1,1 @@
-import * as x from "./dist"
+export * from "./dist"

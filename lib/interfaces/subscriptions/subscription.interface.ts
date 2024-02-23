@@ -1,4 +1,4 @@
-export interface ISubscription{
-    name: string,
-    description?: string
+export interface ISubscription {
+  name: string;
+  description?: string;
 }

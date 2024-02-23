@@ -1,9 +1,9 @@
 import { GetUsersResDto } from '../../dto/user/get-users.res.dto';
-import { NewUserResDto } from 'src/zulip/dto/user/post-newuser.res.dto';
-import {ZulipClient} from "../../core/ZulipClient";
-import {NewUserData} from "../../interfaces/user/newuser-data.interface";
+import { ZulipClient } from '../../core/ZulipClient';
+import { NewUserData } from '../../interfaces/user/newuser-data.interface';
+import { NewUserResDto } from '../../dto/user/post-newuser.res.dto';
 
-export class ZulipUserClient extends ZulipClient{
+export class ZulipUserClient extends ZulipClient {
   protected endpoint: string = '/users';
 
   async getUsers(): Promise<GetUsersResDto> {

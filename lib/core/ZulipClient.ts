@@ -20,17 +20,21 @@ export abstract class ZulipClient {
 
   async post<T>(requestParams: object): Promise<T> {
     const formData = this.generateFormDataFromObject(requestParams);
+    console.log(this.config.getApiUrl() + this.endpoint);
+    console.log(formData);
+    console.log(this.config.getAuth());
     const res = await axios.post<T>(
-      this.config.getApiUrl + this.endpoint,
+      this.config.getApiUrl() + this.endpoint,
       formData,
       this.config.getAuth(),
     );
     return res.data;
   }
 
-  private generateFormDataFromObject(obj: object): FormData {
+  private generateFormDataFromObject(obj: Object): FormData {
     const formData = new FormData();
-    Object.keys(obj).forEach((key) => {
+    Object.keys(obj).forEach((key: string) => {
+      // @ts-ignore
       formData.append(key, obj[key]);
     });
     return formData;
