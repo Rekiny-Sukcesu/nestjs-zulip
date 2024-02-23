@@ -67,10 +67,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mkluszczynski/nest-zulip.git"
+    "url": "git+https://github.com/Rekiny-Sukcesu/nestjs-zulip/nest-zulip.git"
   },
   "bugs": {
-    "url": "https://github.com/mkluszczynski/nest-zulip/issues"
+    "url": "https://github.com/Rekiny-Sukcesu/nestjs-zulip/issues"
   },
-  "homepage": "https://github.com/mkluszczynski/nest-zulip#readme"
+  "homepage": "https://github.com/Rekiny-Sukcesu/nestjs-zulip#readme"
 }
