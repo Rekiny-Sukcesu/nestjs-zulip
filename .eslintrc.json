@@ -1,7 +1,8 @@
 {
     "env": {
         "browser": true,
-        "es2021": true
+        "es2021": true,
+        "jest": true
     },
     "extends": "standard-with-typescript",
     "parserOptions": {
@@ -13,6 +14,9 @@
         "@typescript-eslint/indent": [2, 4],
         "semi": ["error", "always"],
         "@typescript-eslint/semi": ["error", "always"],
-        "padded-blocks": ["error", { "classes": "always", "blocks": "never" }]
+        "padded-blocks": ["error", { "classes": "always", "blocks": "never" }],
+        "quotes": ["error", "double"],
+        "@typescript-eslint/quotes": ["error", "double"],
+        "@typescipt-eslint/no-floating-promises": "allow"
     }
 }
