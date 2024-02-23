@@ -1,15 +1,29 @@
-import { Module } from '@nestjs/common';
+import { DynamicModule, Module } from '@nestjs/common';
 import { ZulipService } from './zulip.service';
-import { type IZulipConfig } from './interfaces/zulip-config.interface';
+import { IZulipConfig } from './interfaces/zulip-config.interface';
 
 @Module({
-    providers: [ZulipService],
-    exports: [ZulipModule]
+  providers: [
+    ZulipService,
+    {
+      provide: 'ZULIP_CONFIG',
+      useValue: {},
+    },
+  ],
+  exports: [ZulipService],
 })
 export class ZulipModule {
-
-    public static forRoot (config: IZulipConfig): ZulipModule {
-        return new ZulipModule();
-    }
-
+  public static register(config: IZulipConfig): DynamicModule {
+    return {
+      module: ZulipModule,
+      providers: [
+        {
+          provide: 'ZULIP_CONFIG',
+          useValue: config,
+        },
+        ZulipService,
+      ],
+      exports: [ZulipService],
+    };
+  }
 }
