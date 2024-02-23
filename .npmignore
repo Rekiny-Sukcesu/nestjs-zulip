@@ -1,0 +1,6 @@
+lib
+test
+index.ts
+package-lock.json
+tsconfig.json
+.prettierrc
