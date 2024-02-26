@@ -23,11 +23,11 @@ export class ZulipService {
     this.zulip = new Zulip(zulipConfig);
   }
 
-  public get UserClient() {
+  public get userClient() {
     return this.zulip.userClient;
   }
 
-  public get MessageClient() {
+  public get messageClient() {
     return this.zulip.messageClient;
   }
 

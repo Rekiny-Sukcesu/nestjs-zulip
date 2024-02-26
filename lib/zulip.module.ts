@@ -3,13 +3,7 @@ import { ZulipService } from './zulip.service';
 import { IZulipConfig } from './interfaces/zulip-config.interface';
 
 @Module({
-  providers: [
-    ZulipService,
-    {
-      provide: 'ZULIP_CONFIG',
-      useValue: {},
-    },
-  ],
+  providers: [ZulipService],
   exports: [ZulipService],
 })
 export class ZulipModule {

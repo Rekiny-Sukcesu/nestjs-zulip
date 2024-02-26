@@ -20,9 +20,6 @@ export abstract class ZulipClient {
 
   async post<T>(requestParams: object): Promise<T> {
     const formData = this.generateFormDataFromObject(requestParams);
-    console.log(this.config.getApiUrl() + this.endpoint);
-    console.log(formData);
-    console.log(this.config.getAuth());
     const res = await axios.post<T>(
       this.config.getApiUrl() + this.endpoint,
       formData,

@@ -6,15 +6,13 @@ import { ZulipAlertwordsClient } from './clients/zulip-alertwords.client';
 import { ZulipMessageClient } from './clients/zulip-message.client';
 
 export class Zulip {
-  public config: ZulipConfig;
   public userClient: ZulipUserClient;
   public meClient: ZulipMeClient;
   public subscriptionsClient: ZulipSubscriptionsClient;
   public alertWordsClient: ZulipAlertwordsClient;
   public messageClient: ZulipMessageClient;
 
-  constructor(config: ZulipConfig) {
-    this.config = config;
+  constructor(public config: ZulipConfig) {
     this.userClient = new ZulipUserClient(config);
     this.meClient = new ZulipMeClient(config);
     this.subscriptionsClient = new ZulipSubscriptionsClient(config);
