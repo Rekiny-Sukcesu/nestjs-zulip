@@ -33,8 +33,8 @@ export class AppModule {}
 ```ts
 return await this.zulipService.MessageClient.sendMessage(
       'stream',
-      'test',
-      'test',
-      'Testowa wiadomość wysłana przez biblioteke nest-zulip',
+      'TestStream',
+      'TestTopic',
+      'Message content.',
     );
 ```
