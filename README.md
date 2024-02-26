@@ -31,7 +31,7 @@ export class AppModule {}
 ### Send message: 
 
 ```ts
-return await this.zulipService.MessageClient.sendMessage(
+return await this.zulipService.messageClient.sendMessage(
       'stream',
       'TestStream',
       'TestTopic',
