@@ -2,6 +2,7 @@ import { ZulipClient } from '../../core/ZulipClient';
 import { GetMessagesDto } from '../../dto/messages/get-messages.dto';
 import { MessageType } from '../../types/MessageType';
 import { PostMessagesDto } from '../../dto/messages/post-messages.dto';
+import { PostEmojiReaction } from '../../dto/messages/post-emoji-reaction';
 
 export class ZulipMessageClient extends ZulipClient {
   protected endpoint = '/messages';
@@ -21,5 +22,12 @@ export class ZulipMessageClient extends ZulipClient {
     content: string,
   ) {
     return await this.post<PostMessagesDto>({ type, to, topic, content });
+  }
+
+  async addEmojiReaction(messageId: number, emojiName: string) {
+    return await this.post<PostEmojiReaction>({
+      message_id: messageId,
+      emoji_name: emojiName,
+    });
   }
 }
