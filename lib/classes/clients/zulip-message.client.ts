@@ -25,9 +25,12 @@ export class ZulipMessageClient extends ZulipClient {
   }
 
   async addEmojiReaction(messageId: number, emojiName: string) {
-    return await this.post<PostEmojiReaction>({
-      message_id: messageId,
-      emoji_name: emojiName,
-    });
+    return await this.post<PostEmojiReaction>(
+      {
+        message_id: messageId,
+        emoji_name: emojiName,
+      },
+      `/${messageId}/reactions`,
+    );
   }
 }

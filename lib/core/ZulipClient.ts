@@ -18,13 +18,14 @@ export abstract class ZulipClient {
     return res.data;
   }
 
-  async post<T>(requestParams: object): Promise<T> {
+  async post<T>(requestParams: object, endpoint = ''): Promise<T> {
     const formData = this.generateFormDataFromObject(requestParams);
     const res = await axios.post<T>(
-      this.config.getApiUrl() + this.endpoint,
+      this.config.getApiUrl() + this.endpoint + endpoint,
       formData,
       this.config.getAuth(),
     );
+
     return res.data;
   }
 
