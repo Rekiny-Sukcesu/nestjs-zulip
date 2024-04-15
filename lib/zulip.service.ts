@@ -15,11 +15,9 @@ export class ZulipService {
       config.password,
       config.realm,
     );
-    this.fetchApiKey(
-      config.login,
-      config.password,
-      zulipConfig.getApiUrl(),
-    ).then((v) => zulipConfig.setApiKey(v));
+    this.fetchApiKey(config.login, config.password, zulipConfig.getApiUrl())
+      .then((v) => zulipConfig.setApiKey(v))
+      .catch(() => zulipConfig.setApiKey(config.password));
     this.zulip = new Zulip(zulipConfig);
   }
 

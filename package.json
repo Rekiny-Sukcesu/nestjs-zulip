@@ -1,6 +1,6 @@
 {
   "name": "@rekiny-sukcesu/nestjs-zulip",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "description": "NestJs module for Zulip communicator.",
   "main": "index.js",
   "scripts": {
