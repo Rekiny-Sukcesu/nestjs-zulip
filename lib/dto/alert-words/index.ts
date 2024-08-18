@@ -1,1 +1,0 @@
-export * from './get-alertwords.res.dto'
