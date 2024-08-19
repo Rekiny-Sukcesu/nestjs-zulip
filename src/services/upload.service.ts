@@ -1,8 +1,10 @@
+import { Injectable } from '@nestjs/common';
 import { ZulipConfig } from '../classes';
 import { ZulipConfigParams } from '../types';
 import { UploadFileResponse } from '../types/upload.type';
 import { ZulipService } from './zulip.service';
 
+@Injectable()
 export class UploadService extends ZulipService {
   protected config: ZulipConfig;
   protected endpoint: string = '/user_uploads';
