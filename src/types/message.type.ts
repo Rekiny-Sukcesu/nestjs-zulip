@@ -1,4 +1,4 @@
-import { ZulipResponse } from './response.type';
+import { Zulip } from './response.type';
 
 export namespace Message {
   export type ResponseCode =
@@ -22,7 +22,7 @@ export namespace Message {
     read_by_sender?: boolean;
   };
 
-  export type SendResponse = ZulipResponse & {
+  export type SendResponse = Zulip.Response & {
     id: number;
     automatic_new_visibility_policy: number;
   };
@@ -46,7 +46,7 @@ export namespace Message {
     apply_markdown?: boolean;
   };
 
-  export type GetResponse = ZulipResponse & {
+  export type GetResponse = Zulip.Response & {
     anchor: number;
     found_newest: boolean;
     found_oldest: boolean;

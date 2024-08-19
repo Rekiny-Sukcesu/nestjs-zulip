@@ -1,6 +1,6 @@
-import { ZulipResponse } from './response.type';
+import { Zulip } from './response.type';
 
-export type UploadFileResponse = ZulipResponse & {
+export type UploadFileResponse = Zulip.Response & {
   uri: string;
   url: string;
 };
