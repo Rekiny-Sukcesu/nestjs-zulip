@@ -1,5 +1,5 @@
-import { ZulipModuleConfig } from './interfaces/zulip-module-config';
 import { ConfigurableModuleBuilder } from '@nestjs/common';
+import { ZulipConfigParams } from './types';
 
 export const { ConfigurableModuleClass, MODULE_OPTIONS_TOKEN } =
-  new ConfigurableModuleBuilder<ZulipModuleConfig>().build();
+  new ConfigurableModuleBuilder<ZulipConfigParams>().build();
