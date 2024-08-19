@@ -3,7 +3,6 @@ import { ZulipConfigParams } from '../types';
 export class ZulipConfig {
   private readonly login: string;
   private readonly password: string;
-  private readonly realm: string;
   private readonly apiUrl: string = '';
 
   constructor(configParams: ZulipConfigParams) {

@@ -1,14 +1,10 @@
 import { ZulipResponse } from './response.type';
 
 export namespace Message {
-
-  //simple types
   export type Type = 'direct' | 'channel' | 'stream' | 'private';
   export type To = string | number | string[] | number[];
   export type PropagatMode = 'change_one' | 'change_all' | 'change_later';
-  export type Narrow = (object | (string | number)[])[];
 
-  // request and response types
   export type SendRequest = {
     type: Type;
     to: To;
@@ -38,7 +34,7 @@ export namespace Message {
     include_anchore?: boolean;
     num_before: number;
     num_after: number;
-    narrow?: Narrow;
+    narrow?: NarrowItem[];
     client_gravatar?: boolean;
     apply_markdown?: boolean;
   };
@@ -48,10 +44,9 @@ export namespace Message {
     found_newest: boolean;
     found_oldest: boolean;
     found_anchor: boolean;
-    messages: (object)[];
+    messages: object[];
   };
 
-  // complex types
   export type HistoryItem = {
     user_id: number | null;
     timestamp: number;
@@ -91,6 +86,11 @@ export namespace Message {
     text: string;
   };
 
+  export type NarrowItem = {
+    operator: string;
+    operand: string;
+    negated?: boolean;
+  };
 
   export type Message = {
     id: number;
@@ -103,7 +103,7 @@ export namespace Message {
     flags: string[];
     sender_email: string;
     sender_full_name: string;
-    display_recipient: string | (object)[];
+    display_recipient: string | object[];
     stream_id: number;
     stream_name: string;
     topic_links: TopicLink[];
@@ -115,9 +115,9 @@ export namespace Message {
     content_type: 'text/html' | 'text/markdown' | string;
     edit_history?: HistoryItem[];
     is_me_message: boolean;
-    last_edit_timestamp: number
+    last_edit_timestamp: number;
     sneder_realm_str: string;
     match_content?: string;
     match_subject?: string;
-  }
+  };
 }
