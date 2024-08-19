@@ -1,5 +1,6 @@
 import { ZulipConfig } from '../classes';
 import { ZulipConfigParams } from '../types';
+import { UploadFileResponse } from '../types/upload.type';
 import { ZulipService } from './zulip.service';
 
 export class UploadService extends ZulipService {
@@ -11,7 +12,9 @@ export class UploadService extends ZulipService {
     this.config = new ZulipConfig(config);
   }
 
-  async uploadFile(filePath: string) {
-    return this.post({ filename: filePath });
+
+  //TODO: Test this
+  async uploadFile(filePath: string): Promise<UploadFileResponse> {
+    return this.post<UploadFileResponse>({ filename: filePath });
   }
 }

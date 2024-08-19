@@ -30,11 +30,32 @@ export abstract class ZulipService {
     return res.data;
   }
 
-  private generateFormDataFromObject(obj: Object): FormData {
+  async patch<T>(requestParams: object, endpoint = ''): Promise<T> {
+    const formData = this.generateFormDataFromObject(requestParams)
+    const res = await axios.patch<T>(
+      this.config.getApiUrl() + this.endpoint + endpoint,
+      formData,
+      this.config.getAuth()
+    )
+
+    return res.data;
+  }
+
+  async delete<T>(endpoint = ''): Promise<T> {
+    const res = await axios.delete<T>(
+      this.config.getApiUrl() + this.endpoint + endpoint,
+      this.config.getAuth()
+    )
+
+    return res.data;
+  }
+
+  private generateFormDataFromObject(obj: Record<string, any>): FormData {
     const formData = new FormData();
     Object.keys(obj).forEach((key: string) => {
       formData.append(key, obj[key]);
     });
+
     return formData;
   }
 }
