@@ -1,5 +1,5 @@
 import { Message } from './message.type';
-import { Reaction } from './reaction.type';}
+import { Reaction } from './reaction.type';
 
 export namespace Zulip {
 

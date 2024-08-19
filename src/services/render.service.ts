@@ -1,8 +1,12 @@
+import { Injectable } from "@nestjs/common";
+import { Render } from "../types/render.type";
+import { ZulipService } from "./zulip.service";
+
 @Injectable()
-export class RenderService {
+export class RenderService extends ZulipService {
   protected endpoint = '/messages/render';
 
-  async renderMessage(params: RenderMessageParams) {
-    return await this.post<RenderMessageResDto>(params);
+  async renderMessage(params: Render.Request): Promise<Render.Response> {
+    return this.post<Render.Response>(params);
   }
 }

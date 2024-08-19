@@ -5,7 +5,7 @@ export namespace Render {
     content: string;
   };
 
-  export type response = Zulip.Response & {
+  export type Response = Zulip.Response & {
     rendered: string;
   };
 }
