@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { ZulipService } from './zulip.service';
 import { Reaction } from '../types/reaction.type';
-import { ZulipResponse } from '../types';
+import { Zulip } from '../types';
 
 @Injectable()
 export class ReactionService extends ZulipService {
@@ -10,8 +10,8 @@ export class ReactionService extends ZulipService {
   public async addReaction(
     messageId: number,
     addRequest: Reaction.AddRequest,
-  ): Promise<ZulipResponse> {
-    return this.post<ZulipResponse>(addRequest, `/${messageId}/reactions`);
+  ): Promise<Zulip.Response> {
+    return this.post<Zulip.Response>(addRequest, `/${messageId}/reactions`);
   }
 
   public async removeReaction(
@@ -19,7 +19,7 @@ export class ReactionService extends ZulipService {
     removeRequest: Reaction.RemoveRequest,
   ): Promise<void> {
     return this.delete<void>(
-      `/${messageId}/reactions/${emojiName}`,
+      `/${messageId}/reactions`,
       removeRequest,
     );
   }

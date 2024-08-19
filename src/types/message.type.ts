@@ -54,6 +54,15 @@ export namespace Message {
     messages: Message[];
   };
 
+  export type GetOneRequest = {
+    apply_markdown?: boolean;
+  };
+
+  export type GetOneResponse = Zulip.Response & {
+    raw_content: string;
+    message: Message;
+  }
+
   export type HistoryItem = {
     user_id: number | null;
     timestamp: number;

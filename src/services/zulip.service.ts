@@ -1,15 +1,17 @@
 import axios from 'axios';
+import { ZulipConfigParams } from '../types';
+import { ZulipConfig } from '../classes';
 
 export abstract class ZulipService {
-  protected config: Zulip.Config;
+  protected config: ZulipConfig;
   protected abstract endpoint: string;
 
-  constructor(config: Zulip.ConfigParams) {
-    this.config = new Zulip.Config(config);
+  constructor(config: ZulipConfigParams) {
+    this.config = new ZulipConfig(config);
   }
 
-  async get<T>(params?: object): Promise<T> {
-    const res = await axios.get<T>(this.config.getApiUrl() + this.endpoint, {
+  async get<T>(params?: object, endpoint = ""): Promise<T> {
+    const res = await axios.get<T>(this.config.getApiUrl() + this.endpoint + endpoint, {
       ...this.config.getAuth(),
       params,
     });
