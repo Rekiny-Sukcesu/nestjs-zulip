@@ -4,13 +4,7 @@ import { ScheduledMessage } from '../types/scheduled-message.type';
 import { ZulipService } from './zulip.service';
 
 export class ScheduledMessageService extends ZulipService {
-  protected config: ZulipConfig;
   protected endpoint: string = '/scheduled_messages';
-
-  constructor(config: ZulipConfigParams) {
-    super(config);
-    this.config = new ZulipConfig(config);
-  }
 
   public async getScheduledMessages(): Promise<ScheduledMessage.GetResponse> {
     return this.get<ScheduledMessage.GetResponse>();

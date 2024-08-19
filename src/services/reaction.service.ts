@@ -18,9 +18,6 @@ export class ReactionService extends ZulipService {
     messageId: number,
     removeRequest: Reaction.RemoveRequest,
   ): Promise<void> {
-    return this.delete<void>(
-      `/${messageId}/reactions`,
-      removeRequest,
-    );
+    return this.delete<void>(`/${messageId}/reactions`, removeRequest);
   }
 }

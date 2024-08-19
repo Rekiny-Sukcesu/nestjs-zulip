@@ -6,14 +6,7 @@ import { ZulipService } from './zulip.service';
 
 @Injectable()
 export class UploadService extends ZulipService {
-  protected config: ZulipConfig;
   protected endpoint: string = '/user_uploads';
-
-  constructor(config: ZulipConfigParams) {
-    super(config);
-    this.config = new ZulipConfig(config);
-  }
-
 
   //TODO: Test this
   async uploadFile(filePath: string): Promise<UploadFileResponse> {
