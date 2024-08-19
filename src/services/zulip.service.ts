@@ -31,21 +31,22 @@ export abstract class ZulipService {
   }
 
   async patch<T>(requestParams: object, endpoint = ''): Promise<T> {
-    const formData = this.generateFormDataFromObject(requestParams)
+    const formData = this.generateFormDataFromObject(requestParams);
     const res = await axios.patch<T>(
       this.config.getApiUrl() + this.endpoint + endpoint,
       formData,
-      this.config.getAuth()
-    )
+      this.config.getAuth(),
+    );
 
     return res.data;
   }
 
-  async delete<T>(endpoint = ''): Promise<T> {
+  async delete<T>(endpoint = '', requestParams: object = {}): Promise<T> {
+    const formData = this.generateFormDataFromObject(requestParams);
     const res = await axios.delete<T>(
       this.config.getApiUrl() + this.endpoint + endpoint,
-      this.config.getAuth()
-    )
+      { ...this.config.getAuth(), data: formData },
+    );
 
     return res.data;
   }

@@ -1,11 +1,7 @@
-export type ResponseResult = 'success' | 'error';
+import { Message } from './message.type';
+import { Reaction } from './reaction.type';}
 
-export type MessageResponseCode =
-  | 'STREAM_DOES_NOT_EXIST'
-  | 'STREAM_WILDCARD_MENTION_NOT_ALLOWED'
-  | 'MOVE_MESSAGES_TIME_LIMIT_EXCEEDED'
-  | 'STREAM_WILDCARD_MENTION_NOT_ALLOWED'
-  | 'TOPIC_WILDCARD_MENTION_NOT_ALLOWED';
+export type ResponseResult = 'success' | 'error';
 
 export type ResponseCode =
   | 'BAD_REQUEST'
@@ -14,7 +10,8 @@ export type ResponseCode =
   | 'USER_DEACTIVATED'
   | 'REALM_DEACTIVATED'
   | 'RATE_LIMIT_HIT'
-  | MessageResponseCode;
+  | Message.ResponseCode
+  | Reaction.ResponseCode;
 
 export type ZulipResponse = {
   msg: string;

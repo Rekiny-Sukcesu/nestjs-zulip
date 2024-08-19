@@ -1,6 +1,13 @@
 import { ZulipResponse } from './response.type';
 
 export namespace Message {
+  export type ResponseCode =
+    | 'STREAM_DOES_NOT_EXIST'
+    | 'STREAM_WILDCARD_MENTION_NOT_ALLOWED'
+    | 'MOVE_MESSAGES_TIME_LIMIT_EXCEEDED'
+    | 'STREAM_WILDCARD_MENTION_NOT_ALLOWED'
+    | 'TOPIC_WILDCARD_MENTION_NOT_ALLOWED';
+
   export type Type = 'direct' | 'channel' | 'stream' | 'private';
   export type To = string | number | string[] | number[];
   export type PropagatMode = 'change_one' | 'change_all' | 'change_later';
@@ -44,7 +51,7 @@ export namespace Message {
     found_newest: boolean;
     found_oldest: boolean;
     found_anchor: boolean;
-    messages: object[];
+    messages: Message[];
   };
 
   export type HistoryItem = {
