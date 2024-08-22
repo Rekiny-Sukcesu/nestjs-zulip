@@ -5,11 +5,29 @@ export class ChannelService extends ZulipService {
   protected endpoint: string = '';
 
   public async getSubscribedChannels(
-    getSubscribedChannelsRequest: Channel.GetSubscribedChannelsRequest,
+    request: Channel.GetSubscribedChannelsRequest,
   ): Promise<Channel.GetSubscribedChannelsResponse> {
     return this.get<Channel.GetSubscribedChannelsResponse>(
-      getSubscribedChannelsRequest,
+      request,
       '/users/me/subscriptions',
+    );
+  }
+
+  public async subscribeToChannel(
+    request: Channel.SubscribeToChannelRequest,
+  ): Promise<Channel.SubscribeToChannelResponse> {
+    return this.post<Channel.SubscribeToChannelResponse>(
+      request,
+      '/users/me/subscriptions',
+    );
+  }
+
+  public async unsubscribeFromChannel(
+    request: Channel.SubscribeToChannelRequest,
+  ): Promise<Channel.SubscribeToChannelResponse> {
+    return this.delete<Channel.SubscribeToChannelResponse>(
+      '/users/me/subscriptions',
+      request,
     );
   }
 }

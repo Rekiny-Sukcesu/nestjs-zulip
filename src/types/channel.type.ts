@@ -29,11 +29,46 @@ export namespace Channel {
     can_remove_subscribers_group: boolean;
   };
 
+  export type Subscription = {
+    name: string;
+    description?: string;
+  };
+
   export type GetSubscribedChannelsRequest = {
     include_subscribers?: boolean;
   };
 
   export type GetSubscribedChannelsResponse = Zulip.Response & {
     subscriptions: Channel[];
+  };
+
+  export type SubscribeToChannelRequest = {
+    subscriptions: Subscription[];
+    principals?: string[] | number[];
+    authorization_errors_fatal?: boolean;
+    announce?: boolean;
+    invite_only?: boolean;
+    is_web_public?: boolean;
+    is_default_stream?: boolean;
+    history_public_to_subscribers?: boolean;
+    stream_post_policy?: 1 | 2 | 3 | 4;
+    message_retention_days?: string | number;
+    can_remove_subscribers_group: boolean;
+  };
+
+  export type SubscribeToChannelResponse = Zulip.Response & {
+    subscribed: Record<string, string[]>;
+    already_subscribed: Record<string, string[]>;
+    unauthorized: string[];
+  };
+
+  export type UnsubscribeFromChannelRequest = {
+    subscriptions: string[];
+    principals?: string[] | number[];
+  };
+
+  export type UnsubscribeFromChannelResponse = Zulip.Response & {
+    not_subscribed: string[];
+    unauthorized: string[];
   };
 }
