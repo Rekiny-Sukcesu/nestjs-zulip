@@ -1,3 +1,4 @@
+import { Zulip } from '../types';
 import { Channel } from '../types/channel.type';
 import { ZulipService } from './zulip.service';
 
@@ -29,5 +30,38 @@ export class ChannelService extends ZulipService {
       '/users/me/subscriptions',
       request,
     );
+  }
+
+  public async getAllChannels(
+    request: Channel.GetAllChannelsRequest,
+  ): Promise<Channel.GetAllChannelsResponse> {
+    return this.get<Channel.GetAllChannelsResponse>(request, '/streams');
+  }
+
+  public async getChannelById(
+    streamId: number,
+    request: Channel.GetChannelIdRequest,
+  ): Promise<Channel.GetChannelByIdResponse> {
+    return this.get<Channel.GetChannelByIdResponse>(
+      request,
+      `/streams/${streamId}`,
+    );
+  }
+
+  public async getChannelId(
+    request: Channel.GetChannelIdRequest,
+  ): Promise<Channel.GetChannelIdResponse> {
+    return this.get<Channel.GetChannelIdResponse>(request, '/get_stream_id');
+  }
+
+  public async updateChannel(
+    streamId: number,
+    request: Channel.UpdateChannelRequest,
+  ): Promise<Zulip.Response> {
+    return this.patch<Zulip.Response>(request, `/streams/${streamId}`);
+  }
+
+  public async archiveChannel(streamId: number): Promise<Zulip.Response> {
+    return this.delete<Zulip.Response>(`/streams/${streamId}`);
   }
 }
