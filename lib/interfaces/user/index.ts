@@ -1,1 +1,0 @@
-export * from "./newuser-data.interface"
