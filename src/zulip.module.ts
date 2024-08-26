@@ -1,6 +1,7 @@
 import { DynamicModule, Module } from '@nestjs/common';
-import { MessageService } from './services';
+import { DraftService, MessageService, ReactionService, RenderService, ScheduledMessageService, UploadService } from './services';
 import { ZulipConfigParams } from './types';
+import { ChannelService } from './services/channel.service';
 
 @Module({
   providers: [MessageService],
@@ -15,9 +16,23 @@ export class ZulipModule {
           provide: 'ZULIP_CONFIG',
           useValue: config,
         },
+        ChannelService,
+        DraftService,
         MessageService,
+        ReactionService,
+        RenderService,
+        ScheduledMessageService,
+        UploadService,
       ],
-      exports: [MessageService],
+      exports: [
+        ChannelService,
+        DraftService,
+        MessageService,
+        ReactionService,
+        RenderService,
+        ScheduledMessageService,
+        UploadService,
+      ],
     };
   }
 }
